@@ -2,6 +2,7 @@
 #-----------------------------------------------------------------------------------
 #INISIALISATION
 
+#Changer le chemin par le chemin dans lequel vous avez télécharger le fichier
 cd /mnt/c/Users/vayss/downloads/
 
 # Obtenir la date actuelle 
