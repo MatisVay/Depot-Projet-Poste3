@@ -34,11 +34,10 @@ Une fois crontab installé sur votre machine, assurez vous que le service soit b
 
 Cette tâche permet d’automatiser le script avec sa ville par défaut, vous pouvez changer le premier argument pour changer la ville (et donc récolter ces données météo). Vous pouvez aussi changer les étoiles par ces valeurs respectives pour changer le moment de l'exécution :
 
-La première étoile  `*` représente les minutes (0-59) 
-La deuxième étoile `*` représente les heures (0-23) 
-La troisième étoile  `*` représente les jours du mois (1-31)  
-La quatrième étoile  `*` représente les mois (1-12) 
-La cinquième étoile  `*` représente les jours de la semaine (0-7, où 0 et 7 représentent tous deux le dimanche) 
+La première étoile représente les minutes (0-59) 
+La deuxième étoile représente les heures (0-23) 
+La troisième étoile représente les jours du mois (1-31)  
+La quatrième étoile représente les mois (1-12) 
+La cinquième étoile représente les jours de la semaine (0-7, où 0 et 7 représentent tous deux le dimanche) 
 
 Enfin, le script cron actuel s'exécute toutes les minutes car les 5 champs sont des étoiles, a vous de le changer pour modifier le moment de l'exécution. Sauvegarder (ctrl s) et quitter le fichier cron (ctrl x), puis redémarrez le service cron pour appliquer correctement les changements (sudo systemctl restart cron).
-
