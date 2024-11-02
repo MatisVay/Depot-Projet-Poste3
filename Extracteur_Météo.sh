@@ -2,7 +2,7 @@
 #-----------------------------------------------------------------------------------
 #INISIALISATION
 
-#Changer le chemin par le chemin dans lequel vous avez télécharger le fichier
+#Changer le chemin par le chemin dans lequel vous avez téléchargé le fichier
 cd /mnt/c/Users/vayss/downloads/
 
 # Obtenir la date actuelle 
@@ -39,7 +39,7 @@ fi
 #-----------------------------------------------------------------------------------
 #MISE EN FORME
 
-# Nettoyer les séquences de couleurs (ANSI) dans recup.html qui empeche la bonne lecture de nos données et nous empeche de les récupérer
+# Nettoyer les séquences de couleurs (ANSI)
 sed -i 's/\x1b\[[0-9;]*m//g' recup.html
 
 #-----------------------------------------------------------------------------------
@@ -67,7 +67,7 @@ echo -e "\e[31mVisibilité : $visibilite_actuel\e[0m"
 #-----------------------------------------------------------------------------------
 #TEMPERATURE DU LENDEMAIN
 
-# Extraire toutes les températures de la journée et les ranger dans tab_temp, On extrait uniquement les chiffres pour les calculs
+# Extraire toutes les températures de la journée et les ranger dans tab_temp
 mapfile -t tab_temp < <(grep -oP '[+-]?\d+(?:\(\d+\))? °C' recup.html)
 
 # Afficher les temperatures du lendemain 
@@ -78,9 +78,6 @@ for i in 5 6 7 8; do
   tab_temp[i]=$(echo "${tab_temp[i]}" | grep -oP '\d+' | head -n 1)
 done
 #imprime la valeur de tab_temp[i], ce qui permet à grep de lire cette valeur depuis l'entrée standard (STDIN).
-
-#afficher sans celsius et infos superflue
-echo "Températures du lendemain formater : Matin :${tab_temp[5]}, Midi : ${tab_temp[6]}, Aprem : ${tab_temp[7]}, Soir : ${tab_temp[8]}"
 
 # Calculer la moyenne des températures à l'index 5, 6, 7 et 8 car la temperature de la journée manquant on fait la moyenne des differents moments de la journée
 moy_temp=$(( (tab_temp[5] + tab_temp[6] + tab_temp[7] + tab_temp[8]) / 4 ))
@@ -99,9 +96,6 @@ temp_lendemain="${moy_temp}°C"
 
 # Rediriger la commande dans le fichier meteo.txt
 echo -e "\e[31m$date_actuelle - $heure_actuelle - $arg1 : $temp_actuel - $temp_lendemain\e[0m" > meteo.txt
-
-# Afficher le contenu du fichier pour vérifier
-cat meteo.txt
 
 #-----------------------------------------------------------------------------------
 #GESTION HISTORIQUE
