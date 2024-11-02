@@ -77,7 +77,6 @@ echo "Températures du lendemain : Matin :${tab_temp[5]}, Midi : ${tab_temp[6]},
 for i in 5 6 7 8; do
   tab_temp[i]=$(echo "${tab_temp[i]}" | grep -oP '\d+' | head -n 1)
 done
-#imprime la valeur de tab_temp[i], ce qui permet à grep de lire cette valeur depuis l'entrée standard (STDIN).
 
 # Calculer la moyenne des températures à l'index 5, 6, 7 et 8 car la temperature de la journée manquant on fait la moyenne des differents moments de la journée
 moy_temp=$(( (tab_temp[5] + tab_temp[6] + tab_temp[7] + tab_temp[8]) / 4 ))
@@ -109,7 +108,7 @@ fi
 echo -e "$date_actuelle - $heure_actuelle - $arg1 : $temp_actuel - $temp_lendemain" >> "$fichier_meteo"
 
 #-----------------------------------------------------------------------------------
-#GESTION HISTORIQUE
+#JSON
 
 echo "{
   \"date\": \"$date_actuelle\",
